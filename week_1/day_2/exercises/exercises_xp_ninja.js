@@ -55,23 +55,37 @@ console.log(capitalizeWords("Hello World!")); // Output: ["HeLlO WoRlD!", "hElLo
 
 
 // ===== Exercise 6 : Calendar
+// Exercise 6 : Calendar
+// This function creates a calendar for a given year and month
 function createCalendar(year, month) {
 
-    // Days of the week (Monday → Sunday)
+    // Names of the days (Monday to Sunday)
     const days = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"];
 
+    // ----------------------------------
     // Get the first day of the month
+    // ----------------------------------
+    // new Date(year, month - 1, 1) → first day of the month
+    // getDay() → returns 0 (Sunday) to 6 (Saturday)
     let firstDay = new Date(year, month - 1, 1).getDay();
-    firstDay = (firstDay + 6) % 7; // Make Monday = 0
 
-    // Get number of days in the month
+    // We want Monday = 0 instead of Sunday
+    firstDay = (firstDay + 6) % 7;
+
+    // ----------------------------------
+    // Get how many days are in the month
+    // ----------------------------------
+    // Using day 0 of the next month gives the last day of this month
     let daysInMonth = new Date(year, month, 0).getDate();
 
-    // Create table
+    // ----------------------------------
+    // Create the table
+    // ----------------------------------
     let table = document.createElement("table");
-    table.border = "1";
 
-    // ===== Create table header =====
+    // ----------------------------------
+    // Create the header row (MO, TU, WE...)
+    // ----------------------------------
     let headerRow = document.createElement("tr");
 
     for (let day of days) {
@@ -82,36 +96,30 @@ function createCalendar(year, month) {
 
     table.appendChild(headerRow);
 
-    // ===== Create days =====
-    let date = 1;
+    // ----------------------------------
+    // Create the calendar days
+    // ----------------------------------
+    let date = 1; // Start counting days from 1
 
-    for (let i = 0; i < 6; i++) { // max 6 weeks
+    // Maximum 6 rows (weeks)
+    for (let week = 0; week < 6; week++) {
         let tr = document.createElement("tr");
 
-        for (let j = 0; j < 7; j++) {
+        // 7 days per week
+        for (let day = 0; day < 7; day++) {
             let td = document.createElement("td");
 
-            if (i === 0 && j < firstDay) {
+            // Empty cells before the first day
+            if (week === 0 && day < firstDay) {
                 td.textContent = "";
-            } else if (date > daysInMonth) {
-                td.textContent = "";
-            } else {
-                td.textContent = date;
-                date++;
             }
-
-            tr.appendChild(td);
+            // Empty cells after the last day
+            else if (date > daysInMonth) {
+                td.textContent = "";
+            }
         }
-
-        table.appendChild(tr);
     }
-
-    // Add table to page
-    document.body.appendChild(table);
 }
-
-// Call the function
-createCalendar(2024, 9);
 
 
 
