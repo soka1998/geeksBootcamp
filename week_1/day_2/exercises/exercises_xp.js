@@ -177,16 +177,16 @@ allLi.forEach(li => {
 //exercise 6 : Change the Navbar
 //1. Change the text of the <a> which has a class of "navbar-brand" to "My Page"
 
-let navbDiv = document.querySelector("#navBar");
-console.log(navbDiv);
+let navDiv = document.getElementById("navBar");
+console.log(navDiv);
 //change the id using setAttribute
-navbDiv.setAttribute("id", "socialNetworkNavigation");
-console.log(navbDiv);
+navDiv.setAttribute("id", "socialNetworkNavigation");
+console.log(navDiv);
 
 
 //Add a new <li> with text "logout" to the 
 //Get the ul inside the div 
-let ul = navbDiv.querySelector("ul");
+let ul = navDiv.querySelector("ul");
 //Create a new li element
 let newLi = document.createElement("li");
 

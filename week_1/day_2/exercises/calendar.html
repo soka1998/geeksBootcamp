@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Calendar</title>
+  </head>
+  <body>
+    <script src="exercises_xp_ninja.js">
+      function createCalendar(year, month) {
+        let table = document.createElement("table");
+        table.border = "1";
+
+        let tr = document.createElement("tr");
+
+        let th = document.createElement("th");
+        th.innerText = "MO";
+        tr.appendChild(th);
+
+        table.appendChild(tr);
+
+        // كنضيفو الجدول لصفحة HTML
+        document.body.appendChild(table);
+      }
+
+      // كنعيطو للفنكسيون
+      createCalendar(2024, 9);
+    </script>
+  </body>
+</html>
