@@ -10,7 +10,6 @@ for (let i = 0; i <= randomNumber; i++) {
 
 // ===== Exercise 2 : Capitalized letters
 //Create a function that takes a string as an argument.
-// Create a function that takes a string as an argument
 function capitalizeWords(str) {
 
     // Convert the entire string to lowercase to ensure consistency
